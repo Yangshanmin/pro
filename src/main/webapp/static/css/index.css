@@ -1,0 +1,39 @@
+/** 重写bootstrap */
+.container-fluid{padding: 0px 3px 0px 3px;}
+.navbar-fixed-top{/* position:static; */}
+.navbar-header{padding-left: 33px;width: 290px;}
+/** 自定义 */
+/* body{padding-bottom: 70px;} */
+#header{margin-bottom: 3px;background-color: #438eb9;}
+#content{padding-top:50px;}
+.sidebar .sidebar-nav.navbar-collapse {padding-right: 0; padding-left: 0;}
+.sidebar ul{margin: 0;padding: 0;list-style: none;}
+.sidebar ul a{color: #585858;text-shadow: none!important;font-size: 13px;text-decoration: none;}
+
+.sidebar .nav-1-level>li {border-top: 1px solid #fcfcfc;border-bottom: 1px solid #e5e5e5;}
+.sidebar .nav-1-level>li>a {display: block;height: 38px;line-height: 36px; padding: 0 16px 0 7px;background-color: #f9f9f9;}
+
+.sidebar .nav-2-level {background-color: #fff;border-top: 1px solid #e5e5e5;}
+/* .sidebar .nav-2-level li{border-bottom: 0!important;} */
+.sidebar .nav-2-level li a {padding-left: 37px;border-top: 1px dotted #e4e4e4;}
+.sidebar .nav-2-level li a:focus {background-color: #fff;}
+.sidebar .nav-2-level>li:first-child>a {border-top: 1px solid #fafafa;}
+
+.sidebar .nav-3-level li a {padding-left: 52px;}
+
+.sidebar .arrow {display: inline-block;width: 14px!important;height: 14px;line-height: 14px;text-shadow: none;font-size: 18px;position: absolute;right: 11px;top: 11px;padding: 0;color: #666;}
+.sidebar .fa.arrow:before { content: "\f104";}
+.sidebar .active>a>.fa.arrow:before {content: "\f107";}
+.sidebar li.active>a {color: #1963aa;}
+.sidebar li>a:hover {background-color: #fff;color: #1963aa;}
+
+@media(min-width:768px) {
+    #left  {position: absolute; width: 196px;z-index: 1;}
+	#right {position: inherit; margin-left:196px;padding: 5px;border-left: 1px solid #e7e7e7;}
+    .navbar-top-links .dropdown-messages,
+    .navbar-top-links .dropdown-tasks,
+    .navbar-top-links .dropdown-alerts {margin-left: auto;}
+}
+#openClose {position: absolute;width:6px;height:100%;margin-left:190px;cursor:pointer;background:silver;}
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover{background-color:#438eb9;}
+.navbar-default .navbar-nav>li>a{color:#fff;}

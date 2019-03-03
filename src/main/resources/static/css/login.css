@@ -1,0 +1,40 @@
+h3{margin:30px;height:50px;line-height:50px;font-size: 22px;}
+
+body{
+    background:url(https://source.unsplash.com/random/);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: scale(1.0001);
+    width: 100%;
+    float: left;
+}
+#loginbox{position:relative;width:22pc;}
+#loginbox{overflow:hidden!important;margin-top:200px;margin-right:auto;margin-left:auto;height:390px;border-radius:7px;background:#fff;box-shadow:0 0 4px #898181;text-align:center;}
+#loginbox form{position:absolute;top:0;left:0;width:100%;height:100%}
+#loginForm{z-index:200}
+#recoverForm{z-index:100;display:none;}
+.input-group{float:left;margin-left:3pc;width:250px;}
+.input-captcha,.input-group{margin-bottom:9pt}
+.font-size-span{display:inline-block;padding-top:6px;font-weight:700;font-size:15px}
+.form-line-split{margin-top:100px;padding:9pt;width:auto;height:60px;}
+.alert{padding:5px}
+.btn-primary {
+    background-color: black;
+    border-color: black;
+}
+.input-group .form-control {
+    border-top-width: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+    width: 90%;
+    -webkit-box-shadow: inset 0 0px 0px rgba(0,0,0,.075);
+    box-shadow: inset 0 0px 0px rgba(0,0,0,.075);
+}
+.iconfont {
+    font-size: 18px;
+    float: left;
+    margin-right: 6px;
+    line-height: 35px;
+}
+

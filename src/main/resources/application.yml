@@ -1,0 +1,69 @@
+debug: false
+server:
+  port: 8787
+  context-path: /pro
+  
+spring:
+  profiles:
+    active: dev
+  http: 
+    encoding.charset: UTF-8
+    encoding.enable: true  
+    encoding.force: true
+    multipart: 
+      max-request-size: 10MB #最大请求大小
+      max-file-size: 10MB #最大文件大小
+  mvc:
+    static-path-pattern: /static/** # Path pattern used for static resources.
+    view:  
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+    throw-exception-if-no-handler-found: true
+  resources: 
+    add-mappings: true # Whether to enable default resource handling.
+    static-locations: classpath:/static/ # Locations of static resources.
+  jackson:
+    date-format: yyyy-MM-dd # HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: NON_NULL
+
+mybatis:
+  typeAliasesPackage: com.nba.mgr.pro.model
+  mapperLocations: classpath:mybatis/*/*.xml
+  configuration:
+    mapUnderscoreToCamelCase: true
+
+##########################################################
+###########  ↓↓↓↓↓↓↓↓ 开发环境 ↓↓↓↓↓↓↓↓  ##################
+##########################################################
+---
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/team_new?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    initialSize: 5
+    minIdle: 5
+    maxActive: 10
+    maxWait: 60000
+    filters: stat,wall,log4j
+    validationQuery: select 'x' from dual
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+
+  redis:
+    host: localhost
+    port: 6379
+    password: 1234
+     #邮箱配置
+  mail:
+    host: smtp.qq.com
+    username: 957728399@qq.com
+    password: otdhkhpriherbdgf
+    default-encoding: UTF-8
+    port: 587
+    fromMail:
+      addr: 957728399@qq.com
+
+

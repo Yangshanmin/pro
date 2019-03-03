@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nba.mgr.pro.dao.TeamInfoDao">
+
+    <resultMap type="com.nba.mgr.pro.entity.TeamInfo" id="TeamInfoMap">
+
+        <result property="id" column="id" jdbcType="INTEGER"/>
+
+        <result property="teamName" column="team_name" jdbcType="VARCHAR"/>
+
+        <result property="teamPhoto" column="team_photo" jdbcType="VARCHAR"/>
+
+        <result property="teamHistory" column="team_history" jdbcType="VARCHAR"/>
+
+        <result property="teamManager" column="team_manager" jdbcType="VARCHAR"/>
+
+        <result property="teamBoss" column="team_boss" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="getById" resultMap="TeamInfoMap">
+        select
+          id, team_name, team_photo, team_history, team_manager, team_boss
+        from team_pro.team_info
+        where id = #{id}
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into team_pro.team_info(team_name, team_photo, team_history, team_manager, team_boss)
+        values (#{teamName}, #{teamPhoto}, #{teamHistory}, #{teamManager}, #{teamBoss})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update team_pro.team_info
+        <set>
+            <if test="teamName != null and teamName != ''">
+                team_name = #{teamName},
+            </if>
+            <if test="teamPhoto != null and teamPhoto != ''">
+                team_photo = #{teamPhoto},
+            </if>
+            <if test="teamHistory != null and teamHistory != ''">
+                team_history = #{teamHistory},
+            </if>
+            <if test="teamManager != null and teamManager != ''">
+                team_manager = #{teamManager},
+            </if>
+            <if test="teamBoss != null and teamBoss != ''">
+                team_boss = #{teamBoss},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from team_pro.team_info where id = #{id}
+    </delete>
+
+
+    <select id="queryByArgs" parameterType="com.nba.mgr.pro.entity.TeamInfo" resultType="com.nba.mgr.pro.entity.TeamInfo">
+  		<include refid="queryTeamInfoCommon"/>
+  		<include refid="queryTeamInfoWhere"/>
+  		order by t.id
+  	</select>
+
+    <sql id="queryTeamInfoCommon">
+      select
+        id, team_name, team_photo, team_history, team_manager, team_boss
+      from team_pro.team_info t
+  	</sql>
+
+    <select id="queryByArgsCount" parameterType="com.nba.mgr.pro.entity.TeamInfo" resultType="Long">
+        select count(1) from team_pro.team_info t
+        <include refid="queryTeamInfoWhere"/>
+    </select>
+
+
+    <sql id="queryTeamInfoWhere">
+      <where>
+                  <if test="id != null">
+                and id = #{id}
+            </if>
+                  <if test="teamName != null and teamName != ''">
+                and team_name = #{teamName}
+            </if>
+                  <if test="teamPhoto != null and teamPhoto != ''">
+                and team_photo = #{teamPhoto}
+            </if>
+                  <if test="teamHistory != null and teamHistory != ''">
+                and team_history = #{teamHistory}
+            </if>
+                  <if test="teamManager != null and teamManager != ''">
+                and team_manager = #{teamManager}
+            </if>
+                  <if test="teamBoss != null and teamBoss != ''">
+                and team_boss like CONCAT('%',#{teamBoss},'%')
+            </if>
+            </where>
+  	</sql>
+
+
+    <!--通过主键删除-->
+    <delete id="del">
+        delete from team_pro.team_info where id = #{id}
+    </delete>
+
+
+</mapper>

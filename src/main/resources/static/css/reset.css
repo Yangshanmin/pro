@@ -1,0 +1,145 @@
+/* 
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com 
+Twitter: @rich_clark
+*/
+
+html, body, div, span, object, iframe,
+/* h1, h2, h3, h4, h5, h6 ,*/ p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:13px;
+    font-weight:normal;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+body {
+    line-height:1;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section { 
+    display:block;
+}
+
+nav ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000; 
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;   
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+/** 覆盖bootstrap */
+.table{margin-bottom:10px;}
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th,.table>thead>tr>td, .table>thead>tr>th {vertical-align: middle;text-align: center;}
+.table-bordered>thead>tr>td, .table-bordered>thead>tr>th{border-bottom-width:1px;}
+.bootstrap-table .fixed-table-body{margin-top: -1px;}
+.fixed-table-pagination .pagination-detail, .fixed-table-pagination div.pagination{margin-top:5px;margin-bottom:0px;}
+.fixed-table-pagination .pagination a {padding:4px 12px;}
+.nav-tabs>li>a, .nav-tabs>li>a:focus, .nav-tabs>li>a:hover {color: #555;}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {color: #337ab7;}
+.panel-body{padding:5px;}
+.panel{margin-bottom:5px;}
+.btn-file {position: relative;overflow: hidden;}
+.btn-file input[type=file] {position: absolute;top: 0;right: 0;min-width: 100%;min-height: 100%;font-size: 100px;text-align: right;filter: alpha(opacity=0);opacity: 0;outline: none;background: white;cursor: inherit;display: block;}
+.thumbnail img{height:100px;width:100px;}
+.thumbnail a img{max-height:100px;max-width:100px;}
+input[type=checkbox], input[type=radio]{margin-top:0px;}
+.form-control[readonly]{background-color: #FFF;}
+.breadcrumb{margin-bottom:5px;background-color: #FFF;}
+.alert{padding:5px;}
+
+/*jquery validate验证显示的字号*/
+span.error{font-size: 12px;}
+/* 内容过长省略 */
+.table{table-layout:fixed;}
+.ellipsis{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+
+/** 自定义 */
+html,body{height:100%;}
+body{font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";}
+table th,td{text-align: center;}
+#divSearch{padding:8px 0px;}
+.form-save input[type="text"],.form-save input[type="number"],.form-save input[type="password"] {width: 206px !important;display: inline-block !important;}
+.form-save select {max-width: 206px !important;display: inline-block !important;}
+.form-save .radio-inline input,.form-save .checkbox-inline input {width: auto !important;}
+.help-inline {display: inline-block;padding-left: 5px;vertical-align: middle;}
+.header{line-height: 28px;margin-bottom: 10px;margin-top: 10px;border-bottom:1px solid #438EB9;color:#438EB9;}
+.formTitle{height:30px;background-color:#eeeeee;padding:10px 30px;margin-bottom:15px;margin-top:15px;}
+.formBody{padding-left:30px;}
+.number{text-align: right;}
