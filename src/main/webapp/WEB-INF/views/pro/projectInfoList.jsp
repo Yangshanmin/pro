@@ -79,8 +79,11 @@
 						</div>
 					</div><div class="form-group">
 						<label for="projectName" class="col-sm-2 control-label">球队头像：</label>
+						<input type="text" class="form-control" id="teamPhoto" name="teamPhoto" maxlength="500" style="display: none!important">
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="teamPhoto" name="teamPhoto" maxlength="50" >
+								<form id="upload-file-form" enctype="multipart/form-data">
+									<input id="upload-file-input" type="file" name="uploadImage" accept="*" />
+								</form>
 							<div class="help-inline"><font color="red">*</font></div>
 						</div>
 					</div>
@@ -167,7 +170,10 @@
 					field : 'teamPhoto',
 					title : '球队图片',
 					width : '15%',
-					align : 'center'
+					align : 'center',
+					formatter: function(value, row, index) {
+						return '<img src='+ value +' style="width:50px;height50px">'
+					}
 				}, {
 					field : 'teamHistory',
 					title : '球队历史',
@@ -192,7 +198,7 @@
 					align : 'center'
 				} ]
 			});
-			
+
 			$table.on('load-success.bs.table', function (data) {
 				//console.log("load-success...");
 			});
@@ -293,6 +299,55 @@
 				});
 			}
 		};
+
+
+		//图片上传
+
+		<%--$('.upload-file').on('change', function(){--%>
+			<%--var formData = new FormData();--%>
+			<%--formData.append('image', $('.upload-file')[0].files[0]);--%>
+			<%--console.log( $('.upload-file'))--%>
+			<%--console.log("图片上传")--%>
+			<%--$.ajax({--%>
+				<%--url: "${ctx}/image/images",--%>
+				<%--async:false,--%>
+				<%--type: "POST",--%>
+				<%--enctype: 'multipart/form-data',--%>
+				<%--data: formData,--%>
+				<%--processData:false,--%>
+				<%--success: function (res) {--%>
+					<%--console.log("ok")--%>
+				<%--},--%>
+				<%--error: function (err) {--%>
+					<%--console.log(err)--%>
+				<%--}--%>
+
+			<%--})--%>
+		<%--});--%>
+
+		$("#upload-file-input").on("change", uploadFile);
+
+		function uploadFile() {
+			console.log($("#upload-file-input"))
+			var f = new FormData();
+			f.append("image", $("#upload-file-input")[0].files[0])
+			$.ajax({
+				url: "${ctx}/image/uploadImage",
+				type: "POST",
+				data: f,
+				enctype: 'multipart/form-data',
+				processData: false,
+				contentType: false,
+				cache: false,
+				success: function (res) {
+					console.log(res)
+					$("#teamPhoto").val(res);
+				},
+				error: function () {
+					console.log(2)
+				}
+			});
+		}
 
 	</script>
 </body>

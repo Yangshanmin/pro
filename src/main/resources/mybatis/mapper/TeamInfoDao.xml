@@ -21,19 +21,19 @@
     <select id="getById" resultMap="TeamInfoMap">
         select
           id, team_name, team_photo, team_history, team_manager, team_boss
-        from team_pro.team_info
+        from team_new.team_info
         where id = #{id}
     </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into team_pro.team_info(team_name, team_photo, team_history, team_manager, team_boss)
+        insert into team_new.team_info(team_name, team_photo, team_history, team_manager, team_boss)
         values (#{teamName}, #{teamPhoto}, #{teamHistory}, #{teamManager}, #{teamBoss})
     </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
-        update team_pro.team_info
+        update team_new.team_info
         <set>
             <if test="teamName != null and teamName != ''">
                 team_name = #{teamName},
@@ -56,7 +56,7 @@
 
     <!--通过主键删除-->
     <delete id="deleteById">
-        delete from team_pro.team_info where id = #{id}
+        delete from team_new.team_info where id = #{id}
     </delete>
 
 
@@ -69,11 +69,11 @@
     <sql id="queryTeamInfoCommon">
       select
         id, team_name, team_photo, team_history, team_manager, team_boss
-      from team_pro.team_info t
+      from team_new.team_info t
   	</sql>
 
     <select id="queryByArgsCount" parameterType="com.nba.mgr.pro.entity.TeamInfo" resultType="Long">
-        select count(1) from team_pro.team_info t
+        select count(1) from team_new.team_info t
         <include refid="queryTeamInfoWhere"/>
     </select>
 
@@ -104,7 +104,7 @@
 
     <!--通过主键删除-->
     <delete id="del">
-        delete from team_pro.team_info where id = #{id}
+        delete from team_new.team_info where id = #{id}
     </delete>
 
 

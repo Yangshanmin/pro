@@ -9,7 +9,7 @@ import org.free.persistence.service.BaseService;
  * (PlayerInfo)表服务接口
  *
  * @author makejava
- * @since 2019-03-03 21:38:46
+ * @since 2019-03-05 19:57:20
  */
 public interface PlayerInfoService extends BaseService<PlayerInfo> {
 

@@ -7,10 +7,10 @@ import org.free.persistence.model.BaseModel;
  * (PlayerInfo)实体类
  *
  * @author makejava
- * @since 2019-03-03 21:38:46
+ * @since 2019-03-05 19:57:14
  */
 public class PlayerInfo extends BaseModel {
-    private static final long serialVersionUID = 206796390520220053L;
+    private static final long serialVersionUID = 834164592124124504L;
     
     private Long id;
     

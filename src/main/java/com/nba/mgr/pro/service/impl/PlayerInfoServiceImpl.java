@@ -13,7 +13,7 @@ import java.util.List;
  * (PlayerInfo)表服务实现类
  *
  * @author makejava
- * @since 2019-03-03 21:38:46
+ * @since 2019-03-05 19:57:20
  */
 @Service("playerInfoService")
 public class PlayerInfoServiceImpl extends CrudServiceImpl<PlayerInfoDao, PlayerInfo> implements PlayerInfoService {

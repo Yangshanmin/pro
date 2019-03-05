@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
  * (PlayerInfo)表数据库访问层
  *
  * @author makejava
- * @since 2019-03-03 21:38:46
+ * @since 2019-03-05 19:57:19
  */
 @Repository
 public interface PlayerInfoDao extends CrudDao<PlayerInfo> {

@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ include file="/WEB-INF/views/common/taglib.jsp"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <jsp:include page="../common/decorator.jsp"></jsp:include>
 <jsp:include page="../common/taglib.jsp"></jsp:include>
@@ -19,13 +21,13 @@
 			<div class="col-md-9 col-lg-9 text-right">
 				<form class="form-search form-inline" action="#">
 					<div class="form-group">
-						<label for="search_teamName">球队名称：</label>
-						<input type="text" class="form-control" id="search_teamName" placeholder="" />
+						<label for="search_teamName">球员名称：</label>
+						<input type="text" class="form-control" id="search_playerName" placeholder="" />
 					</div>
-					<div class="form-group">
-						<label for="search_teamBoss">球队老板：</label>
-						<input type="text" class="form-control" id="search_teamBoss" placeholder="" />
-					</div>
+					<%--<div class="form-group">--%>
+						<%--<label for="search_teamBoss">球队老板：</label>--%>
+						<%--<input type="text" class="form-control" id="search_teamBoss" placeholder="" />--%>
+					<%--</div>--%>
 					<button type="button" class="btn btn-default" id="btnSearch">查询</button>
 				</form>
 			</div>
@@ -55,7 +57,13 @@
 						<div class="form-group">
 							<label for="projectName" class="col-sm-2 control-label">球队名称：</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="teamName" name="teamName" maxlength="50" >
+								<select>
+									<option value ="" disabled>请选择</option>
+									<c:forEach items="${teamList}" var="item">
+										<option value ="${item.id}">${item.teamName}</option>
+									</c:forEach>
+								</select>
+								<%--<input type="text" class="form-control" id="teamName" name="teamName" maxlength="50" >--%>
 								<div class="help-inline"><font color="red">*</font></div>
 							</div>
 						</div>
@@ -67,7 +75,7 @@
 							</div>
 						</div><div class="form-group">
 						<label for="projectName" class="col-sm-2 control-label">球队经理：</label>
-						<div class="col-sm-10">
+						<div class="col-sm-10">xc
 							<input type="text" class="form-control" id="teamManager" name="teamManager" maxlength="50" >
 							<div class="help-inline"><font color="red">*</font></div>
 						</div>
@@ -150,37 +158,67 @@
 
 			var $table = $('#table');
 			$table.bootstrapTable({
-				url : '${ctx}/teamInfo/list',
+				url : '${ctx}/playerInfo/list',
 				height : getTableHeight(),
 				columns : [ {
 					field : 'id',
-					title : '球队ID',
-					width : '20%',
+					title : '球员ID',
+					width : '15%',
 					align : 'center'
 				}, {
-					field : 'teamName',
-					title : '球队名字',
+					field : 'teamId',
+					title : '球队ID',
 					cellStyle : ellipsis,
 					width : '15%',
 					align : 'center'
 				}, {
-					field : 'teamPhoto',
-					title : '球队图片',
+					field : 'playerName',
+					title : '球员名字',
 					width : '15%',
 					align : 'center'
 				}, {
-					field : 'teamHistory',
-					title : '球队历史',
+					field : 'playerAge',
+					title : '球员年龄',
 					width : '15%',
 					align : 'center'
 				}, {
-					field : 'teamManager',
-					title : '球队经理',
+					field : 'playerPhoto',
+					title : '球员头像',
 					width : '15%',
 					align : 'center'
 				},  {
-					field : 'teamBoss',
-					title : '球队老板',
+					field : 'playerHeight',
+					title : '球员身高',
+					width : '15%',
+					align : 'center'
+				},{
+					field : 'playerWeight',
+					title : '球员体重',
+					width : '15%',
+					align : 'center'
+				},{
+					field : 'playerArmlength',
+					title : '球员臂展',
+					width : '15%',
+					align : 'center'
+				},{
+					field : 'playerScore',
+					title : '球员得分',
+					width : '15%',
+					align : 'center'
+				},{
+					field : 'playerBackboard',
+					title : '球员篮板',
+					width : '15%',
+					align : 'center'
+				},{
+					field : 'playerAssists',
+					title : '球员助攻',
+					width : '15%',
+					align : 'center'
+				},{
+					field : 'playerState',
+					title : '球员状态',
 					width : '15%',
 					align : 'center'
 				}, {
@@ -192,7 +230,7 @@
 					align : 'center'
 				} ]
 			});
-			
+
 			$table.on('load-success.bs.table', function (data) {
 				//console.log("load-success...");
 			});

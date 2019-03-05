@@ -4,9 +4,9 @@
 
     <resultMap type="com.nba.mgr.pro.entity.PlayerInfo" id="PlayerInfoMap">
 
-        <result property="id" column="id" jdbcType="LONG INTEGER"/>
+        <result property="id" column="id" jdbcType="INTEGER"/>
 
-        <result property="teamId" column="team_id" jdbcType="LONG INTEGER"/>
+        <result property="teamId" column="team_id" jdbcType="INTEGER"/>
 
         <result property="playerName" column="player_name" jdbcType="VARCHAR"/>
 
