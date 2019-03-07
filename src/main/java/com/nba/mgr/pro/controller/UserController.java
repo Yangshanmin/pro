@@ -2,6 +2,7 @@ package com.nba.mgr.pro.controller;
 
 import com.nba.mgr.pro.entity.User;
 import com.nba.mgr.pro.service.UserService;
+import org.free.persistence.model.PageResult;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -53,4 +53,29 @@ public class PlayerInfoController {
         return playerInfoService.queryPage(playerInfo);
     }
 
+    @RequestMapping("/saveOrUpdate")
+    @ResponseBody
+    public String saveOrUpdate (@RequestBody PlayerInfo playerInfo) {
+
+        System.out.println(playerInfo);
+
+        playerInfoService.saveOrUpdate(playerInfo);
+        return "success";
+    }
+
+    @RequestMapping("/getById/{id}")
+    @ResponseBody
+    public PlayerInfo getById (@PathVariable String id) {
+
+        return playerInfoService.getById(id);
+
+    }
+
+    @RequestMapping("/delete/{id}")
+    @ResponseBody
+    public String delete (@PathVariable String id) {
+
+        playerInfoService.del(id);
+        return "success";
+    }
 }

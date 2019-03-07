@@ -51,17 +51,17 @@
                     <li class="">
                         <a class="has-arrow" href="#" aria-expanded="false">
                             <span class="fa fa-cog"></span>
-                            系统管理
+                            用户管理
                         </a>
                         <ul class="nav nav-2-level collapse" aria-expanded="false" style="height: 1px;">
                             <li>
-                                <a href="/pro/sysmgr/roleMgr" target="mainFrame" aria-expanded="false">
-                                    <span class="fa fa-registered"></span>角色管理
+                                <a href="/pro/teamUser/index" target="mainFrame" aria-expanded="false">
+                                    <span class="fa fa-registered"></span>球队管理员管理
                                 </a>
                             </li>
                             <li>
                                 <a href="/pro/sysmgr/userMgr" target="mainFrame" aria-expanded="false">
-                                    <span class="fa fa-user"></span>用户管理
+                                    <span class="fa fa-user"></span>普通用户管理
                                 </a>
                             </li>
                         </ul>
@@ -81,6 +81,12 @@
                     <li>
                         <a class="" href="/pro/projectInfo/list" target="mainFrame" aria-expanded="false">
                             <span class="fa fa-building"></span>
+                            比赛管理
+                        </a>
+                    </li>
+                    <li>
+                        <a class="" href="/pro/projectInfo/list" target="mainFrame" aria-expanded="false">
+                            <span class="fa fa-navicon"></span>
                             项目列表
                         </a>
                     </li>

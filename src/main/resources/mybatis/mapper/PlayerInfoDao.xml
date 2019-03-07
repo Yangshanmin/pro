@@ -98,8 +98,9 @@
 
     <sql id="queryPlayerInfoCommon">
       select
-        id, team_id, player_name, player_age, player_photo, player_height, player_weight, player_armlength, player_score, player_backboard, player_assists, player_state
+        t.id, team_id, team.team_name teamName, player_name, player_age, player_photo, player_height, player_weight, player_armlength, player_score, player_backboard, player_assists, player_state
       from team_new.player_info t
+      left join team_new.team_info team on t.team_id = team.id
   	</sql>
 
     <select id="queryByArgsCount" parameterType="com.nba.mgr.pro.entity.PlayerInfo" resultType="Long">
@@ -149,5 +150,8 @@
             </where>
   	</sql>
 
-
+    <!--通过主键删除-->
+    <delete id="del">
+        delete from team_new.player_info where id = #{id}
+    </delete>
 </mapper>

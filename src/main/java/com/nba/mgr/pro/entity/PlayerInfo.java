@@ -15,6 +15,8 @@ public class PlayerInfo extends BaseModel {
     private Long id;
     
     private Long teamId;
+
+    private String teamName;
     
     private String playerName;
     
@@ -133,4 +135,11 @@ public class PlayerInfo extends BaseModel {
         this.playerState = playerState;
     }
 
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
+    }
 }

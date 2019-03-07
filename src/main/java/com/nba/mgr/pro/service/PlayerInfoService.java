@@ -12,5 +12,5 @@ import org.free.persistence.service.BaseService;
  * @since 2019-03-05 19:57:20
  */
 public interface PlayerInfoService extends BaseService<PlayerInfo> {
-
+    public void del(String id);
 }

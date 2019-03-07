@@ -7,7 +7,7 @@
 <jsp:include page="../common/taglib.jsp"></jsp:include>
 <html>
 <head>
-    <title>项目管理</title>
+    <title>用户管理</title>
 </head>
 
 <body>
@@ -22,7 +22,7 @@
         <div class="col-md-9 col-lg-9 text-right">
             <form class="form-search form-inline" action="#">
                 <div class="form-group">
-                    <label for="search_playerName">球员名称：</label>
+                    <label for="search_playerName">球队名称：</label>
                     <input type="text" class="form-control" id="search_playerName" placeholder=""/>
                 </div>
                 <%--<div class="form-group">--%>
@@ -71,81 +71,32 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="playerName" class="col-sm-2 control-label">球员名字：</label>
+                        <label for="name" class="col-sm-2 control-label">名字：</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="playerName" name="playerName" maxlength="50">
+                            <input type="text" class="form-control" id="name" name="name" maxlength="50">
                             <div class="help-inline"><font color="red">*</font></div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="playerAge" class="col-sm-2 control-label">球员年龄：</label>
+                        <label for="mobile" class="col-sm-2 control-label">手机：</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="playerAge" name="playerAge" maxlength="50">
+                            <input type="text" class="form-control" id="mobile" name="mobile" maxlength="50">
                             <div class="help-inline"><font color="red">*</font></div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="playerHeight" class="col-sm-2 control-label">球员身高：</label>
+                        <label for="password" class="col-sm-2 control-label">密码：</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="playerHeight" name="playerHeight"
+                            <input type="text" class="form-control" id="password" name="password"
                                    maxlength="50">
                             <div class="help-inline"><font color="red">*</font></div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="playerWeight" class="col-sm-2 control-label">球员体重：</label>
+                        <label for="email" class="col-sm-2 control-label">邮箱：</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="playerWeight" name="playerWeight"
+                            <input type="text" class="form-control" id="email" name="email"
                                    maxlength="50">
-                            <div class="help-inline"><font color="red">*</font></div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="playerArmlength" class="col-sm-2 control-label">球员臂展：</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="playerArmlength" name="playerArmlength"
-                                   maxlength="50">
-                            <div class="help-inline"><font color="red">*</font></div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="playerScore" class="col-sm-2 control-label">球员得分：</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="playerScore" name="playerScore" maxlength="50">
-                            <div class="help-inline"><font color="red">*</font></div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="playerBackboard" class="col-sm-2 control-label">球员篮板：</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="playerBackboard" name="playerBackboard"
-                                   maxlength="50">
-                            <div class="help-inline"><font color="red">*</font></div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="playerAssists" class="col-sm-2 control-label">球员助攻：</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="playerAssists" name="playerAssists"
-                                   maxlength="50">
-                            <div class="help-inline"><font color="red">*</font></div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="playerState" class="col-sm-2 control-label">球员状态：</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="playerState" name="playerState" maxlength="50">
-                            <div class="help-inline"><font color="red">*</font></div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="playerPhoto" class="col-sm-2 control-label">球员头像：</label>
-                        <input type="text" class="form-control" id="playerPhoto" name="playerPhoto" maxlength="500"
-                               style="display: none!important">
-                        <div class="col-sm-10">
-                            <form id="upload-file-form" enctype="multipart/form-data">
-                                <input id="upload-file-input" type="file" name="uploadImage" accept="*"/>
-                            </form>
                             <div class="help-inline"><font color="red">*</font></div>
                         </div>
                     </div>
@@ -167,7 +118,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="myModalViewLabel">球队信息</h4>
+                <h4 class="modal-title" id="myModalViewLabel">账号信息</h4>
             </div>
             <div class="modal-body">
                 <form id="formView" class="form-view form-horizontal" method="post" action="#">
@@ -217,71 +168,39 @@
     $(function () {
 
         var $table = $('#table');
+
         $table.bootstrapTable({
-            url: '${ctx}/playerInfo/list',
+            url: '${ctx}/teamUser/list',
             height: getTableHeight(),
             columns: [{
                 field: 'id',
-                title: '球员ID',
+                title: '账号ID',
                 width: '15%',
                 align: 'center'
             }, {
-                field: 'teamName',
-                title: '球队名字',
+                field: 'teamId',
+                title: '球队ID',
                 cellStyle: ellipsis,
                 width: '15%',
                 align: 'center'
             }, {
-                field: 'playerName',
-                title: '球员名字',
+                field: 'name',
+                title: '名字',
                 width: '15%',
                 align: 'center'
             }, {
-                field: 'playerAge',
-                title: '球员年龄',
+                field: 'mobile',
+                title: '手机',
                 width: '15%',
                 align: 'center'
             }, {
-                field: 'playerPhoto',
-                title: '球员头像',
+                field: 'password',
+                title: '密码',
                 width: '15%',
                 align: 'center',
-                formatter: function (value, row, index) {
-                    return '<img src=' + value + ' style="width:50px;height50px">'
-                }
             }, {
-                field: 'playerHeight',
-                title: '球员身高',
-                width: '15%',
-                align: 'center'
-            }, {
-                field: 'playerWeight',
-                title: '球员体重',
-                width: '15%',
-                align: 'center'
-            }, {
-                field: 'playerArmlength',
-                title: '球员臂展',
-                width: '15%',
-                align: 'center'
-            }, {
-                field: 'playerScore',
-                title: '球员得分',
-                width: '15%',
-                align: 'center'
-            }, {
-                field: 'playerBackboard',
-                title: '球员篮板',
-                width: '15%',
-                align: 'center'
-            }, {
-                field: 'playerAssists',
-                title: '球员助攻',
-                width: '15%',
-                align: 'center'
-            }, {
-                field: 'playerState',
-                title: '球员状态',
+                field: 'email',
+                title: '邮箱',
                 width: '15%',
                 align: 'center'
             }, {
@@ -317,7 +236,7 @@
         $("#btnSave").click(function () {
             if ($("#formSave").valid()) {
                 var obj = $(".form-save").getFormObject();
-                $.ajaxPostJson("${ctx}/playerInfo/saveOrUpdate", obj, function (result) {
+                $.ajaxPostJson("${ctx}/teamUser/saveOrUpdate", obj, function (result) {
                     $('#table').bootstrapTable("refresh");
                     $('#myModal').modal('hide');
                     showMessage("操作成功!");
@@ -381,7 +300,7 @@
             validator.resetForm();//清除验证错误的显示
             $('#myModal').modal('show');
             $('#myModalLabel').html('修改');
-            $.ajaxPostJson("${ctx}/playerInfo/getById/" + row.id, {}, function (result) {
+            $.ajaxPostJson("${ctx}/teamUser/getById/" + row.id, {}, function (result) {
                 if (result) {
                     console.log(result);
 
@@ -391,16 +310,16 @@
             });
         },
         'click .remove': function (e, value, row, index) {
-            $.ajaxPostJson("${ctx}/playerInfo/delete/" + row.id, {}, function (result) {
+            $.ajaxPostJson("${ctx}/teamUser/delete/" + row.id, {}, function (result) {
                 $('#table').bootstrapTable("refresh");
                 showMessage("操作成功!");
             });
         },
         'click .export': function (e, value, row, index) {
-            jQuery.download("${ctx}/playerInfo/export/" + row.id, {});
+            jQuery.download("${ctx}/teamUser/export/" + row.id, {});
         },
         'click .detail': function (e, value, row, index) {
-            $.ajaxPostJson("${ctx}/playerInfo/getById/" + row.id, {}, function (result) {
+            $.ajaxPostJson("${ctx}/teamUser/getById/" + row.id, {}, function (result) {
                 if (result) {
                     $('#myModalView').modal('show');
                     $(".form-view").setFormObject(result);
