@@ -79,7 +79,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="" href="/pro/projectInfo/list" target="mainFrame" aria-expanded="false">
+                        <a class="" href="/pro/gameInfo/index" target="mainFrame" aria-expanded="false">
                             <span class="fa fa-building"></span>
                             比赛管理
                         </a>
