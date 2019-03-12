@@ -3,6 +3,7 @@ package com.nba.mgr.pro.service.impl;
 import com.nba.mgr.pro.entity.PlayerInfo;
 import com.nba.mgr.pro.dao.PlayerInfoDao;
 import com.nba.mgr.pro.service.PlayerInfoService;
+import org.free.persistence.model.PageResult;
 import org.springframework.stereotype.Service;
 import org.free.persistence.service.CrudServiceImpl;
 
@@ -23,5 +24,24 @@ public class PlayerInfoServiceImpl extends CrudServiceImpl<PlayerInfoDao, Player
     @Override
     public void del(String id) {
         playerInfoDao.del(id);
+    }
+
+    @Override
+    public PageResult<PlayerInfo> scoreList() {
+        List<PlayerInfo> list = playerInfoDao.scoreList();
+       return new PageResult<PlayerInfo>(Long.valueOf(list.size()), list);
+    }
+
+
+    @Override
+    public PageResult<PlayerInfo> backboardList() {
+        List<PlayerInfo> list = playerInfoDao.backboardList();
+        return new PageResult<PlayerInfo>(Long.valueOf(list.size()), list);
+    }
+
+    @Override
+    public PageResult<PlayerInfo> assistsList() {
+        List<PlayerInfo> list = playerInfoDao.assistsList();
+        return new PageResult<PlayerInfo>(Long.valueOf(list.size()), list);
     }
 }

@@ -56,9 +56,6 @@ public class PlayerInfoController {
     @RequestMapping("/saveOrUpdate")
     @ResponseBody
     public String saveOrUpdate (@RequestBody PlayerInfo playerInfo) {
-
-        System.out.println(playerInfo);
-
         playerInfoService.saveOrUpdate(playerInfo);
         return "success";
     }
@@ -66,16 +63,49 @@ public class PlayerInfoController {
     @RequestMapping("/getById/{id}")
     @ResponseBody
     public PlayerInfo getById (@PathVariable String id) {
-
         return playerInfoService.getById(id);
-
     }
 
     @RequestMapping("/delete/{id}")
     @ResponseBody
     public String delete (@PathVariable String id) {
-
         playerInfoService.del(id);
         return "success";
+    }
+
+    //得分排行榜
+    @RequestMapping("/score")
+    public String score (Model model) {
+        return "pro/scoreList";
+    }
+
+    @RequestMapping("/scoreList")
+    @ResponseBody
+    public PageResult<PlayerInfo> scoreList () {
+        return playerInfoService.scoreList();
+    }
+
+    //篮板球
+    @RequestMapping("/backboard")
+    public String backboard (Model model) {
+        return "pro/backboardList";
+    }
+
+    @RequestMapping("/backboardList")
+    @ResponseBody
+    public PageResult<PlayerInfo> backboardList() {
+        return playerInfoService.backboardList();
+    }
+
+    @RequestMapping("/assists")
+    public String assists (Model model) {
+        return "pro/assistsList";
+    }
+
+    @RequestMapping("/assistsList")
+    @ResponseBody
+    public PageResult<PlayerInfo> assistsList () {
+        return playerInfoService.assistsList();
+//        return  playerInfoService.queryByArgsList();
     }
 }

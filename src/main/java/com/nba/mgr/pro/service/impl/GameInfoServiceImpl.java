@@ -19,4 +19,9 @@ import java.util.List;
 public class GameInfoServiceImpl extends CrudServiceImpl<GameInfoDao, GameInfo> implements GameInfoService {
     @Resource
     private GameInfoDao gameInfoDao;
+
+    @Override
+    public void del(String id) {
+        gameInfoDao.del(id);
+    }
 }

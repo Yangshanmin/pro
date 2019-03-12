@@ -95,5 +95,9 @@
             </where>
   	</sql>
 
+    <!--通过主键删除-->
+    <delete id="del">
+        delete from team_new.game_info where id = #{id}
+    </delete>
 
 </mapper>

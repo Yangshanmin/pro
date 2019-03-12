@@ -30,11 +30,11 @@ public class PlayerInfo extends BaseModel {
     
     private String playerArmlength;
     
-    private String playerScore;
+    private Integer playerScore;
     
-    private String playerBackboard;
+    private Integer playerBackboard;
     
-    private String playerAssists;
+    private Integer playerAssists;
     
     private String playerState;
 
@@ -103,27 +103,28 @@ public class PlayerInfo extends BaseModel {
         this.playerArmlength = playerArmlength;
     }
 
-    public String getPlayerScore() {
+
+    public Integer getPlayerScore() {
         return playerScore;
     }
 
-    public void setPlayerScore(String playerScore) {
+    public void setPlayerScore(Integer playerScore) {
         this.playerScore = playerScore;
     }
 
-    public String getPlayerBackboard() {
+    public Integer getPlayerBackboard() {
         return playerBackboard;
     }
 
-    public void setPlayerBackboard(String playerBackboard) {
+    public void setPlayerBackboard(Integer playerBackboard) {
         this.playerBackboard = playerBackboard;
     }
 
-    public String getPlayerAssists() {
+    public Integer getPlayerAssists() {
         return playerAssists;
     }
 
-    public void setPlayerAssists(String playerAssists) {
+    public void setPlayerAssists(Integer playerAssists) {
         this.playerAssists = playerAssists;
     }
 

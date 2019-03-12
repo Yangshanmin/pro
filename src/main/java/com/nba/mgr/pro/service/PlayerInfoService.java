@@ -1,8 +1,10 @@
 package com.nba.mgr.pro.service;
 
 import com.nba.mgr.pro.entity.PlayerInfo;
-import java.util.List;
+import org.free.persistence.model.PageResult;
 import org.free.persistence.service.BaseService;
+
+import java.util.List;
 
 
 /**
@@ -12,5 +14,9 @@ import org.free.persistence.service.BaseService;
  * @since 2019-03-05 19:57:20
  */
 public interface PlayerInfoService extends BaseService<PlayerInfo> {
+
     public void del(String id);
+    public PageResult<PlayerInfo> scoreList();
+    public PageResult<PlayerInfo> backboardList();
+    public PageResult<PlayerInfo> assistsList();
 }

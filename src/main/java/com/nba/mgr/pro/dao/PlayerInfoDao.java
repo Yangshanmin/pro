@@ -3,6 +3,8 @@ package com.nba.mgr.pro.dao;
 import com.nba.mgr.pro.entity.PlayerInfo;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
+
+import org.free.persistence.model.PageResult;
 import org.free.persistence.repository.CrudDao;
 import org.springframework.stereotype.Repository;
 
@@ -66,5 +68,13 @@ public interface PlayerInfoDao extends CrudDao<PlayerInfo> {
     int deleteById(Long id);
 
     void del(@Param("id") String id);
+
+    List<PlayerInfo> scoreList();
+
+    List<PlayerInfo> backboardList();
+
+    List<PlayerInfo> assistsList();
+
+    PageResult<PlayerInfo> queryByArgsList();
 
 }

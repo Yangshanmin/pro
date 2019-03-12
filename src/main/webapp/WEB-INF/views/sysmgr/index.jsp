@@ -80,15 +80,32 @@
                     </li>
                     <li>
                         <a class="" href="/pro/gameInfo/index" target="mainFrame" aria-expanded="false">
-                            <span class="fa fa-building"></span>
-                            比赛管理
-                        </a>
+                        <span class="fa fa-building"></span>
+                        比赛管理
+                    </a>
                     </li>
-                    <li>
-                        <a class="" href="/pro/projectInfo/list" target="mainFrame" aria-expanded="false">
+                    <li class="">
+                        <a class="has-arrow" href="#" aria-expanded="false">
                             <span class="fa fa-navicon"></span>
-                            项目列表
+                            比赛排行榜
                         </a>
+                        <ul class="nav nav-2-level collapse" aria-expanded="false" style="height: 1px;">
+                            <li>
+                                <a href="/pro/playerInfo/score" target="mainFrame" aria-expanded="false">
+                                    <span class="fa fa-user"></span>得分排行榜
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/pro/playerInfo/backboard" target="mainFrame" aria-expanded="false">
+                                    <span class="fa fa-user"></span>篮板球排行榜
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/pro/playerInfo/assists" target="mainFrame" aria-expanded="false">
+                                    <span class="fa fa-user"></span>助攻排行榜
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>

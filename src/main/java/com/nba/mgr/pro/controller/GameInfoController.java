@@ -63,4 +63,24 @@ public class GameInfoController {
         gameInfoService.saveOrUpdate(gameInfo);
         return "success";
     }
+
+    @RequestMapping("/delete/{id}")
+    @ResponseBody
+    public String delete (@PathVariable String id) {
+
+        gameInfoService.del(id);
+        return "success";
+    }
+
+    @RequestMapping("/getById/{id}")
+    @ResponseBody
+    public GameInfo getById (@PathVariable String id) {
+        return gameInfoService.getById(id);
+    }
+
+    @RequestMapping("/detail/{id}")
+    public String detail () {
+        return "pro/gameDetailList";
+    }
+
 }

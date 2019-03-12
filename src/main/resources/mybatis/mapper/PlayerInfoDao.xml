@@ -20,11 +20,11 @@
 
         <result property="playerArmlength" column="player_armlength" jdbcType="VARCHAR"/>
 
-        <result property="playerScore" column="player_score" jdbcType="VARCHAR"/>
+        <result property="playerScore" column="player_score" jdbcType="INTEGER"/>
 
-        <result property="playerBackboard" column="player_backboard" jdbcType="VARCHAR"/>
+        <result property="playerBackboard" column="player_backboard" jdbcType="INTEGER"/>
 
-        <result property="playerAssists" column="player_assists" jdbcType="VARCHAR"/>
+        <result property="playerAssists" column="player_assists" jdbcType="INTEGER"/>
 
         <result property="playerState" column="player_state" jdbcType="VARCHAR"/>
     </resultMap>
@@ -154,4 +154,33 @@
     <delete id="del">
         delete from team_new.player_info where id = #{id}
     </delete>
+
+    <!--排行榜查询-->
+    <select id="scoreList"  resultType="com.nba.mgr.pro.entity.PlayerInfo">
+      select
+        t.id, player_name, player_photo, player_score, player_backboard, player_assists
+      from team_new.player_info t
+      order by t.player_score desc
+    </select>
+
+    <select id="backboardList" parameterType="com.nba.mgr.pro.entity.PlayerInfo" resultType="com.nba.mgr.pro.entity.PlayerInfo">
+      select
+        t.id, player_name, player_photo, player_score, player_backboard, player_assists
+      from team_new.player_info t
+      order by t.player_backboard desc
+    </select>
+
+    <select id="assistsList" parameterType="com.nba.mgr.pro.entity.PlayerInfo" resultType="com.nba.mgr.pro.entity.PlayerInfo">
+      select
+       t.id, player_name, player_photo, player_score, player_backboard, player_assists
+      from team_new.player_info t
+      order by t.player_assists desc
+    </select>
+
+    <select id="queryByArgsList" resultMap="PlayerInfoMap">
+        select *
+        from team_new.player_info t
+        order by t.player_score desc
+    </select>
+
 </mapper>

@@ -65,4 +65,5 @@ public interface GameInfoDao extends CrudDao<GameInfo> {
      */
     int deleteById(Long id);
 
+    void del(@Param("id") String id);
 }
