@@ -18,7 +18,7 @@
     <div id="header" role="navigation" class="navbar navbar-default navbar-fixed-top">
         <div class="navbar-header">
             <%-- <img alt="logo" src="${ctx}/static/images/logo.png" style="width:40px;float:left;margin-top:3px;" /> --%>
-                <a class="navbar-brand" href="#"><font color="#fff" onclick="meunToggle()">WEB后台</font></a>
+                <a class="navbar-brand" href="#"><font color="#fff" onclick="meunToggle()">NBA球队管理系统</font></a>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -48,40 +48,29 @@
                             主页
                         </a>
                     </li>
-                    <li class="">
-                        <a class="has-arrow" href="#" aria-expanded="false">
-                            <span class="fa fa-cog"></span>
-                            用户管理
-                        </a>
-                        <ul class="nav nav-2-level collapse" aria-expanded="false" style="height: 1px;">
-                            <li>
-                                <a href="/pro/teamUser/index" target="mainFrame" aria-expanded="false">
-                                    <span class="fa fa-registered"></span>球队管理员管理
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/pro/normalUser/index" target="mainFrame" aria-expanded="false">
-                                    <span class="fa fa-user"></span>普通用户管理
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+
                     <li>
-                        <a class="" href="/pro/teamInfo/index" target="mainFrame" aria-expanded="false">
+                        <a class="" href="/pro/teamInfo/normalTeamList" target="mainFrame" aria-expanded="false">
                             <span class="fa fa-user"></span>
-                            球队管理
+                            球队列表
                         </a>
                     </li>
                     <li>
-                        <a class="" href="/pro/playerInfo/index" target="mainFrame" aria-expanded="false">
+                        <a class="" href="/pro/teamInfo/myTeam" target="mainFrame" aria-expanded="false">
+                            <span class="fa fa-user"></span>
+                            我的球队
+                        </a>
+                    </li>
+                    <li>
+                        <a class="" href="/pro/playerInfo/normalIndex" target="mainFrame" aria-expanded="false">
                             <span class="fa fa-list"></span>
-                            球员管理
+                            球员列表
                         </a>
                     </li>
                     <li>
-                        <a class="" href="/pro/gameInfo/index" target="mainFrame" aria-expanded="false">
+                        <a class="" href="/pro/gameInfo/normalIndex" target="mainFrame" aria-expanded="false">
                         <span class="fa fa-building"></span>
-                        比赛管理
+                        比赛
                     </a>
                     </li>
                     <li class="">
@@ -91,17 +80,17 @@
                         </a>
                         <ul class="nav nav-2-level collapse" aria-expanded="false" style="height: 1px;">
                             <li>
-                                <a href="/pro/playerInfo/score" target="mainFrame" aria-expanded="false">
+                                <a href="/pro/playerInfo/normalScore" target="mainFrame" aria-expanded="false">
                                     <span class="fa fa-user"></span>得分排行榜
                                 </a>
                             </li>
                             <li>
-                                <a href="/pro/playerInfo/backboard" target="mainFrame" aria-expanded="false">
+                                <a href="/pro/playerInfo/normalBackboard" target="mainFrame" aria-expanded="false">
                                     <span class="fa fa-user"></span>篮板球排行榜
                                 </a>
                             </li>
                             <li>
-                                <a href="/pro/playerInfo/assists" target="mainFrame" aria-expanded="false">
+                                <a href="/pro/playerInfo/normalAssists" target="mainFrame" aria-expanded="false">
                                     <span class="fa fa-user"></span>助攻排行榜
                                 </a>
                             </li>
@@ -121,7 +110,9 @@
 
 <script src="${ctx}/static/metismenu/2.7.7/metisMenu.min.js" type="text/javascript"></script>
 <script type="text/javascript">
+    console.log("123123");
 
+    console.log(${userTeamId} );
     var TOP_HEIGHT = 100;
     var breadCrumbArr = [];
     $(function () {

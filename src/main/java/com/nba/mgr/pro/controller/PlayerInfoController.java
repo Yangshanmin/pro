@@ -47,6 +47,13 @@ public class PlayerInfoController {
         return "pro/playerInfoList";
     }
 
+    @RequestMapping("/normalIndex")
+    public String normalIndex (Model model) {
+        List<TeamInfo> teamInfoList = teamInfoService.queryByArgs(new TeamInfo());
+        model.addAttribute("teamList", teamInfoList);
+        return "pro/normalPlayerInfoList";
+    }
+
     @RequestMapping("/list")
     @ResponseBody
     public PageResult<PlayerInfo> list (@RequestBody PlayerInfo playerInfo) {
@@ -78,7 +85,10 @@ public class PlayerInfoController {
     public String score (Model model) {
         return "pro/scoreList";
     }
-
+    @RequestMapping("/normalScore")
+    public String normalScore (Model model) {
+        return "pro/normalScoreList";
+    }
     @RequestMapping("/scoreList")
     @ResponseBody
     public PageResult<PlayerInfo> scoreList () {
@@ -91,6 +101,11 @@ public class PlayerInfoController {
         return "pro/backboardList";
     }
 
+    @RequestMapping("/normalBackboard")
+    public String normalBackboard (Model model) {
+        return "pro/normalBackboardList";
+    }
+
     @RequestMapping("/backboardList")
     @ResponseBody
     public PageResult<PlayerInfo> backboardList() {
@@ -100,6 +115,11 @@ public class PlayerInfoController {
     @RequestMapping("/assists")
     public String assists (Model model) {
         return "pro/assistsList";
+    }
+
+    @RequestMapping("/normalAssists")
+    public String normalAssists (Model model) {
+        return "pro/normalAssistsList";
     }
 
     @RequestMapping("/assistsList")

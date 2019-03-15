@@ -6,10 +6,10 @@
 package com.nba.mgr.pro.controller;
 
 import com.nba.mgr.pro.entity.MailCode;
+import com.nba.mgr.pro.entity.NormalUser;
+import com.nba.mgr.pro.entity.TeamUser;
 import com.nba.mgr.pro.entity.User;
-import com.nba.mgr.pro.service.EmailService;
-import com.nba.mgr.pro.service.MailCodeService;
-import com.nba.mgr.pro.service.UserService;
+import com.nba.mgr.pro.service.*;
 import com.nba.mgr.pro.util.Md5Util;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -39,7 +39,10 @@ public class LoginController {
 	private MailCodeService mailCodeService;
 	@Autowired
 	private EmailService emailService;
-
+	@Autowired
+	private NormalUserService normalUserService;
+    @Autowired
+    private TeamUserService teamUserService;
 
 	@RequestMapping(value = "/")
 	public String index(HttpServletRequest request) {
@@ -136,4 +139,47 @@ public class LoginController {
 		}
 	}
 
+	//普通用户登陆界面
+	@RequestMapping(value = "/normalLogin")
+	public String normalLogin(HttpServletRequest request) {
+			return "normalLogin";
+	}
+
+	@RequestMapping(value = "/normalLogin1")
+	public String normalLogin1(HttpServletRequest request, NormalUser normalUser, Model model) {
+		String DBpassword = Md5Util.getMD5(normalUser.getPassword());
+		normalUser.setPassword(DBpassword);
+		NormalUser virifyUser =  normalUserService.queryTop1(normalUser);
+		if (virifyUser != null) {
+			request.getSession().setAttribute("user", virifyUser);
+			model.addAttribute("username", virifyUser.getName());
+			logger.debug(">>>>已登录，将跳转至主页");
+			return "/sysmgr/normalIndex";
+		} else {
+			return "normalLogin";
+		}
+	}
+
+	//球队管理员登陆界面
+	@RequestMapping(value = "/teamLogin")
+	public String teamLogin(HttpServletRequest request) {
+		return "teamLogin";
+	}
+
+	@RequestMapping(value = "/teamLogin1")
+	public String teamLogin1(HttpServletRequest request, TeamUser teamUser, Model model) {
+		String DBpassword = Md5Util.getMD5(teamUser.getPassword());
+        teamUser.setPassword(DBpassword);
+		TeamUser virifyUser =  teamUserService.queryTop1(teamUser);
+		if (virifyUser != null) {
+			request.getSession().setAttribute("user", virifyUser);
+			model.addAttribute("username", virifyUser.getName());
+
+			model.addAttribute("userTeamId",virifyUser.getTeamId());
+			logger.debug(">>>>已登录，将跳转至主页");
+			return "/sysmgr/teamIndex";
+		} else {
+			return "teamLogin";
+		}
+	}
 }

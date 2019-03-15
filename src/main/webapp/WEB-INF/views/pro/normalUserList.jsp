@@ -22,8 +22,8 @@
         <div class="col-md-9 col-lg-9 text-right">
             <form class="form-search form-inline" action="#">
                 <div class="form-group">
-                    <label for="search_gameTime">比赛时间：</label>
-                    <input type="text" class="form-control" id="search_gameTime" placeholder=""/>
+                    <label for="search_playerName">球队名称：</label>
+                    <input type="text" class="form-control" id="search_playerName" placeholder=""/>
                 </div>
                 <%--<div class="form-group">--%>
                 <%--<label for="search_teamBoss">球队老板：</label>--%>
@@ -56,7 +56,7 @@
                 <form id="formSave" class="form-save form-horizontal" method="post" action="#">
                     <input type="hidden" id="id" name="id"/>
                     <div class="form-group">
-                        <label for="teamZhuName" class="col-sm-2 control-label">主场球队：</label>
+                        <label for="teamName" class="col-sm-2 control-label">所属球队：</label>
                         <div class="col-sm-10">
                             <select id="select">
                                 <option value="" disabled>请选择</option>
@@ -64,36 +64,39 @@
                                     <option value="${item.id}">${item.teamName}</option>
                                 </c:forEach>
                             </select>
-                            <input style="display: none !important " type="text" class="form-control" id="teamZhuId"
-                                   name="teamZhuId" maxlength="50" value="${item.id}">
+
+                            <input style="display: none !important " type="text" class="form-control" id="teamId"
+                                   name="teamId" maxlength="50" value="${item.id}">
                             <div class="help-inline"><font color="red">*</font></div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="teamKeName" class="col-sm-2 control-label">客场球队：</label>
+                        <label for="name" class="col-sm-2 control-label">名字：</label>
                         <div class="col-sm-10">
-                            <select id="select1">
-                                <option value="" disabled>请选择</option>
-                                <c:forEach items="${teamList}" var="item">
-                                    <option value="${item.id}">${item.teamName}</option>
-                                </c:forEach>
-                            </select>
-                            <input style="display: none !important " type="text" class="form-control" id="teamKeId"
-                                   name="teamKeId" maxlength="50" value="${item.id}">
+                            <input type="text" class="form-control" id="name" name="name" maxlength="50">
                             <div class="help-inline"><font color="red">*</font></div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="gameTime" class="col-sm-2 control-label">比赛时间：</label>
+                        <label for="mobile" class="col-sm-2 control-label">手机：</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="gameTime" name="gameTime" maxlength="50">
+                            <input type="text" class="form-control" id="mobile" name="mobile" maxlength="50">
                             <div class="help-inline"><font color="red">*</font></div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="gameScore" class="col-sm-2 control-label">比赛得分：</label>
+                        <label for="password" class="col-sm-2 control-label">密码：</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="gameScore" name="gameScore" maxlength="50">
+                            <input type="text" class="form-control" id="password" name="password"
+                                   maxlength="50">
+                            <div class="help-inline"><font color="red">*</font></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="col-sm-2 control-label">邮箱：</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="email" name="email"
+                                   maxlength="50">
                             <div class="help-inline"><font color="red">*</font></div>
                         </div>
                     </div>
@@ -167,46 +170,33 @@
         var $table = $('#table');
 
         $table.bootstrapTable({
-            url: '${ctx}/gameInfo/list',
+            url: '${ctx}/normalUser/list',
             height: getTableHeight(),
             columns: [{
                 field: 'id',
-                title: '比赛ID',
+                title: '账号ID',
                 width: '15%',
                 align: 'center'
             }, {
-                field: 'teamZhuId',
-                title: '主场球队ID',
-                cellStyle: ellipsis,
+                field: 'name',
+                title: '名字',
                 width: '15%',
                 align: 'center'
             }, {
-                field: 'teamZhuName',
-                title: '主场球队名字',
-                cellStyle: ellipsis,
-                width: '15%',
-                align: 'center'
-            },{
-                field: 'teamKeId',
-                title: '客场球队ID',
+                field: 'mobile',
+                title: '手机',
                 width: '15%',
                 align: 'center'
             }, {
-                field: 'teamKeName',
-                title: '客场球队名字',
-                cellStyle: ellipsis,
-                width: '15%',
-                align: 'center'
-            },{
-                field: 'gameTime',
-                title: '比赛时间',
-                width: '15%',
-                align: 'center'
-            }, {
-                field: 'gameScore',
-                title: '比赛得分',
+                field: 'password',
+                title: '密码',
                 width: '15%',
                 align: 'center',
+            }, {
+                field: 'email',
+                title: '邮箱',
+                width: '15%',
+                align: 'center'
             }, {
                 field: '*',
                 title: '操作',
@@ -240,7 +230,7 @@
         $("#btnSave").click(function () {
             if ($("#formSave").valid()) {
                 var obj = $(".form-save").getFormObject();
-                $.ajaxPostJson("${ctx}/gameInfo/saveOrUpdate", obj, function (result) {
+                $.ajaxPostJson("${ctx}/teamUser/saveOrUpdate", obj, function (result) {
                     $('#table').bootstrapTable("refresh");
                     $('#myModal').modal('hide');
                     showMessage("操作成功!");
@@ -248,24 +238,17 @@
             }
         });
 
-        //监听主队select
+        //监听select
         $("#select").change(function () {
             //要触发的事件
-            var a = $("#select option:checked").val(); // 选中项目的显示值
-            // console.log("主队"+a);
+            var a = $("select option:checked").val(); // 选中项目的显示值
+            console.log(a);
+
             // $("#teamId").attr("value",a);//只改变value不改变框内容
-            $("#teamZhuId").val(a);
+            $("#teamId").val(a);
             <%--value ="${item.id}">${item.teamName}--%>
         });
-        //监听客队select
-        $("#select1").change(function () {
-            //要触发的事件
-            var a = $("#select1 option:checked").val(); // 选中项目的显示值
-            // console.log("客队"+a);
-            // $("#teamId").attr("value",a);//只改变value不改变框内容
-            $("#teamKeId").val(a);
-            <%--value ="${item.id}">${item.teamName}--%>
-        });
+
         //查询
         $("#btnSearch").click(function () {
             $table.bootstrapTable("refresh");
@@ -300,7 +283,7 @@
     function operateFormatter(value, row, index) {
         var html = '';
         html += '<a class="edit" href="javascript:void(0)">修改</a> &nbsp;&nbsp;';
-        html += '<a class="detail" href="${ctx}/gameDetail/index/'+ row.id +'">详情</a> &nbsp;&nbsp;';
+        html += '<a class="detail" href="javascript:void(0)">基础信息</a> &nbsp;&nbsp;';
         html += '<a class="remove" href="javascript:void(0)">删除</a> &nbsp;&nbsp;';
         /* html+= '<a class="export" href="javascript:void(0)">导出</a> &nbsp;&nbsp;'; */
         return html;
@@ -311,32 +294,30 @@
             validator.resetForm();//清除验证错误的显示
             $('#myModal').modal('show');
             $('#myModalLabel').html('修改');
-            $.ajaxPostJson("${ctx}/gameInfo/getById/" + row.id, {}, function (result) {
+            $.ajaxPostJson("${ctx}/normalUser/getById/" + row.id, {}, function (result) {
                 if (result) {
                     console.log(result);
 
                     $(".form-save").setFormObject(result);
-                    $("#select").val(result.teamZhuId);
-                    $("#select1").val(result.teamKeId);
+                    $("#select").val(result.teamId);
                 }
             });
         },
         'click .remove': function (e, value, row, index) {
-            $.ajaxPostJson("${ctx}/gameInfo/delete/" + row.id, {}, function (result) {
+            $.ajaxPostJson("${ctx}/normalUser/delete/" + row.id, {}, function (result) {
                 $('#table').bootstrapTable("refresh");
                 showMessage("操作成功!");
             });
         },
         'click .export': function (e, value, row, index) {
-            jQuery.download("${ctx}/gameInfo/export/" + row.id, {});
+            jQuery.download("${ctx}/normalUser/export/" + row.id, {});
         },
         'click .detail': function (e, value, row, index) {
-            $.ajaxPostJson("${ctx}/gameInfo/detail/" + row.id, {}, function (result) {
-                // if (result) {
-                //     $('#myModalView').modal('show');
-                //     $(".form-view").setFormObject(result);
-                // }
-
+            $.ajaxPostJson("${ctx}/normalUser/getById/" + row.id, {}, function (result) {
+                if (result) {
+                    $('#myModalView').modal('show');
+                    $(".form-view").setFormObject(result);
+                }
             });
         }
     };

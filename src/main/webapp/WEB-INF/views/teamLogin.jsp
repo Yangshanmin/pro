@@ -20,8 +20,8 @@
 </div>
 	<div class="container text-center">
 		<div id="loginbox">
-			<form id="loginForm" autocomplete="off" class="form-vertical text-center form-save" action="${ctx}/login" method="post">
-				<h3>联盟管理员登录</h3>
+			<form id="loginForm" autocomplete="off" class="form-vertical text-center form-save" action="${ctx}/teamLogin1" method="post">
+				<h3>球队管理员登录</h3>
 				<div class="input-group">
 					<i class="iconfont icon-yonghu"></i>
 					<input type="text" id="username" name="mobile" class="form-control input-medium required" placeholder="手机号">
@@ -79,8 +79,10 @@
 		</div>
 	</div>
 <div>
-	<a href="${ctx}/normalLogin">普通用户登陆</a>
-	<a href="${ctx}/teamLogin" style="float:right; margin-right: 50px">球队管理员登陆</a>
+
+	<a href="${ctx}/login">联盟管理员登陆</a>
+	<a href="${ctx}/normalLogin" style="float:right; margin-right: 50px">普通用户登陆</a>
+
 </div>
 	<script src="${ctx}/static/jquery-validation/1.11.1/jquery.validate.min.js" type="text/javascript"></script>
 	<script src="${ctx}/static/jquery-validation/jquery.validate.extend.js" type="text/javascript"></script>
@@ -111,6 +113,9 @@
 						}
 					}
 			});
+
+			$("#teamLogin1").attr("action", "teamUser")
+
 			$("#btnLogin").click(function(){
 				if(!loginForm.valid()){
 					return;
@@ -118,7 +123,8 @@
 				$("#password").val($.md5($("#password").val()));
 				loginForm.submit();
 			});
-			
+
+
 			var speed = 400;
 			$('#btnRecover').click(function(){
 				loginForm.fadeTo(speed,0.01).css('z-index','100');

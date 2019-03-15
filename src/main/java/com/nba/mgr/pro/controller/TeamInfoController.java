@@ -69,6 +69,9 @@ public class TeamInfoController {
 
     }
 
-
+    @RequestMapping("/normalTeamList")
+    public String normalIndex () {
+        return "pro/normalTeamList";
+    }
 
 }
